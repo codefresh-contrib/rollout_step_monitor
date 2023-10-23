@@ -32,7 +32,7 @@ def main():
         "STEP_INDEX": STEP_INDEX
     }
     print("Monitoring the following Rollout step: ")
-    print(json.dumps(parameters, indent=4))
+    print(json.dumps(parameters, indent=4), "\n")
     if release_exists() == False:
         raise Exception("Release doesn't exist")
     # Generating link to the Apps Dashboard
@@ -190,7 +190,7 @@ def monitor_rollout_step():
     rollout_step_state = get_rollout_step_state()
     rollout_step_status = rollout_step_state['status']
 
-    while rollout_step_status in ['ACTIVE', 'PENDING']:
+    while rollout_step_status in ['ACTIVE', 'PENDING', 'PAUSED_INCONCLUSIVE']:
         print(f'{ rollout_step_status}, ', end="")
         rollout_step_state = get_rollout_step_state()
         rollout_step_status = rollout_step_state['status']
