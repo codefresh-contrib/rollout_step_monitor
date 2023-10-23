@@ -1,0 +1,19 @@
+query getRolloutStepStatus(
+  $runtime: String!
+  $appNamespace: String!
+  $appName: String!
+  $commitSHA: String!
+  $rollout: String!
+  $stepIndex: Int!
+) {
+  rolloutStepStatus(
+    runtime: $runtime
+    appNamespace: $appNamespace
+    appName: $appName
+    commitSHA: $commitSHA
+    rollout: $rollout
+    stepIndex: $stepIndex
+  ) {
+    status
+  }
+}
