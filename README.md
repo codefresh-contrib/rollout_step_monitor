@@ -53,6 +53,11 @@ export image_tag="`yq .version service.yaml`"
 export registry="franciscocodefresh" ## Docker Hub
 docker build -t ${image_name} .
 docker run --rm --env-file variables.env ${image_name}
+```
+
+-   Pushing the image:
+
+```sh
 docker tag ${image_name} ${registry}/${image_name}:${image_tag}
 docker push ${registry}/${image_name}:${image_tag}
 ```
